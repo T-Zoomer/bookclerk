@@ -7,7 +7,7 @@ from .services import BookRecommendationService
 
 def home(request):
     """Homepage with form to enter preferences."""
-    recent_requests = RecommendationRequest.objects.order_by('-created_at')[:5]
+    recent_requests = RecommendationRequest.objects.order_by('-created_at')[:10]
     return render(request, 'recommendations/home.html', {'recent_requests': recent_requests})
 
 

@@ -1,0 +1,37 @@
+{% load static %}
+<!-- Header Section -->
+<div class="bg-cream rounded-xl shadow-2xl border border-burgundy-soft p-8 mb-10 relative overflow-hidden">
+    <!-- Paper texture overlay -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22 viewBox=%220 0 40 40%22><g fill=%22%238b4513%22><circle cx=%2210%22 cy=%2210%22 r=%220.5%22 opacity=%220.2%22/><circle cx=%2230%22 cy=%2230%22 r=%220.3%22 opacity=%220.1%22/></g></svg>');"></div>
+    
+    <!-- Decorative corners -->
+    <div class="absolute top-3 left-3 w-8 h-8 border-l-2 border-t-2 border-gold/50"></div>
+    <div class="absolute top-3 right-3 w-8 h-8 border-r-2 border-t-2 border-gold/50"></div>
+    <div class="absolute bottom-3 left-3 w-8 h-8 border-l-2 border-b-2 border-gold/50"></div>
+    <div class="absolute bottom-3 right-3 w-8 h-8 border-r-2 border-b-2 border-gold/50"></div>
+    
+    <div class="relative z-10">
+        <div class="flex items-center justify-between mb-6">
+            <div class="flex items-center space-x-4">
+                <div>
+                    <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-32 h-32 object-contain">
+                </div>
+                <h2 class="text-4xl font-serif font-semibold text-ink">BookClerk's Recommendations</h2>
+            </div>
+            <a href="{% url 'home' %}" class="inline-block">
+                {% include 'recommendations/_recommendation_button.html' with button_type='button' button_text='New Request' icon='✨' %}
+            </a>
+        </div>
+        
+        <!-- Preferences Display -->
+        <h3 class="text-xl font-serif font-semibold text-leather mb-3">
+            <span>Based on your preferences:</span>
+        </h3>
+        <div class="bg-parchment/60 rounded-lg border border-gold/30 p-6 relative">
+            <div class="absolute top-2 left-2 text-gold/40 text-lg">❝</div>
+            <div class="absolute bottom-2 right-2 text-gold/40 text-lg">❞</div>
+            
+            <p class="text-ink font-serif text-2xl italic leading-relaxed">{{ request.user_preferences }}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+{% extends 'recommendations/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    {% include 'recommendations/_prompt_input.html' %}
+
+    {% include 'recommendations/_recent_recommendations.html' %}
+</div>
+{% endblock %}

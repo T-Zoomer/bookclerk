@@ -1,0 +1,32 @@
+{% load static %}
+<!-- No Recommendations State -->
+<div class="bg-cream rounded-xl shadow-xl border border-burgundy-soft p-12 text-center relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-6 left-6 w-8 h-8 border-l-2 border-t-2 border-gold/40"></div>
+    <div class="absolute top-6 right-6 w-8 h-8 border-r-2 border-t-2 border-gold/40"></div>
+    <div class="absolute bottom-6 left-6 w-8 h-8 border-l-2 border-b-2 border-gold/40"></div>
+    <div class="absolute bottom-6 right-6 w-8 h-8 border-r-2 border-b-2 border-gold/40"></div>
+    
+    <div class="relative z-10">
+        <div class="mb-6 flex justify-center opacity-40">
+            <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-48 h-48 object-contain">
+        </div>
+        <h3 class="text-3xl font-serif font-semibold text-ink mb-4">No Recommendations Found</h3>
+        <p class="text-leather font-serif text-xl mb-6 max-w-md mx-auto leading-relaxed">
+            BookClerk couldn't generate recommendations for your request. 
+            Try being more specific about your preferences.
+        </p>
+        
+        <div class="flex justify-center items-center space-x-4 mb-8">
+            <span class="w-12 h-px bg-gold/40"></span>
+            <span class="text-gold text-2xl">✨</span>
+            <span class="w-12 h-px bg-gold/40"></span>
+        </div>
+        
+        <a href="{% url 'home' %}" class="inline-flex items-center space-x-3 bg-burgundy hover:bg-leather text-cream px-8 py-4 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 font-serif text-xl font-medium">
+            <span>🔍</span>
+            <span>Try Again</span>
+            <span>📖</span>
+        </a>
+    </div>
+</div>

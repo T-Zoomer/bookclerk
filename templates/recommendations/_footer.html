@@ -1,0 +1,26 @@
+{% load static %}
+<footer class="bg-leather text-cream mt-20 relative">
+    <!-- Decorative top border -->
+    <div class="h-px bg-gold opacity-40"></div>
+    
+    <div class="container mx-auto px-8 py-8 text-center relative">
+        <!-- Ornamental flourishes -->
+        <div class="flex justify-center items-center space-x-4 mb-4">
+            <div class="w-12 h-px bg-gold opacity-60"></div>
+            <div class="text-gold text-2xl">❦</div>
+            <div class="w-12 h-px bg-gold opacity-60"></div>
+        </div>
+        
+        <p class="font-serif text-xl mb-2">&copy; 2024 BookClerk</p>
+        <p class="text-gold text-base italic">BookClerk finds the right books for you</p>
+        
+        <!-- Small decorative elements -->
+        <div class="mt-6 flex justify-center space-x-8 text-gold opacity-40">
+            <span class="text-xs">📖</span>
+            <span class="text-xs">✨</span>
+            <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-4 h-4 object-contain">
+            <span class="text-xs">✨</span>
+            <span class="text-xs">📖</span>
+        </div>
+    </div>
+</footer>

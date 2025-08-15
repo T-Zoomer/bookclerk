@@ -1,0 +1,47 @@
+<!-- Reusable Recommendation Button -->
+<button 
+    type="{{ button_type|default:'button' }}" 
+    id="{{ button_id }}"
+    class="bg-leather hover:bg-leather/90 text-cream font-serif font-semibold py-4 px-8 rounded-lg shadow-xl border-2 border-gold/30 transition-all duration-200 flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.02] active:scale-[0.98] {{ extra_classes }}"
+    {% if show_loading %}onclick="showLoadingState('{{ button_id }}', '{{ loading_text|default:'Loading...' }}')"{% endif %}
+>
+    <div class="btn-content flex items-center justify-center space-x-3">
+        {% if icon %}<span class="text-lg">{{ icon }}</span>{% endif %}
+        <span class="text-xl">{{ button_text|default:'Submit' }}</span>
+    </div>
+</button>
+
+{% if show_loading %}
+<script>
+function showLoadingState(buttonId, loadingText) {
+    const submitBtn = document.getElementById(buttonId);
+    const btnContent = submitBtn.querySelector('.btn-content');
+    
+    if (submitBtn && btnContent) {
+        submitBtn.disabled = true;
+        submitBtn.classList.add('animate-pulse');
+        btnContent.innerHTML = `
+            <div class="flex items-center space-x-2">
+                <div class="w-5 h-4 relative">
+                    <div class="w-1 h-4 bg-gold absolute left-0 animate-bounce"></div>
+                    <div class="w-4 h-3 bg-cream absolute right-0 top-0.5 rounded-r-sm animate-pulse"></div>
+                </div>
+                <span>${loadingText}</span>
+                <div class="flex space-x-1">
+                    <div class="w-1 h-1 bg-gold rounded-full animate-bounce" style="animation-delay: 0s"></div>
+                    <div class="w-1 h-1 bg-gold rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-1 h-1 bg-gold rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                </div>
+            </div>
+        `;
+        
+        // If this is a form button, submit the form
+        if (submitBtn.type === 'submit') {
+            setTimeout(() => {
+                submitBtn.closest('form').submit();
+            }, 100);
+        }
+    }
+}
+</script>
+{% endif %}

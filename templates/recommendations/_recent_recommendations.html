@@ -1,0 +1,34 @@
+{% if recent_requests %}
+<!-- Recent Requests Section -->
+<div class="bg-cream rounded-xl shadow-xl border border-burgundy-soft p-8 relative">
+    <!-- Decorative header -->
+    <div class="text-center mb-6">
+        <h3 class="text-3xl font-serif font-bold text-ink mb-2">Recent Recommendations</h3>
+    </div>
+    
+    <div class="space-y-4">
+        {% for request in recent_requests %}
+        <a href="{% url 'view_recommendations' request.id %}" class="block">
+            <div class="bg-white rounded-lg p-5 hover:shadow-lg hover:bg-gray-50 transition-all duration-200 group cursor-pointer">
+                <div class="flex items-start justify-between">
+                    <div class="flex-1 pr-4">
+                        <p class="text-lg text-gray-900 font-serif leading-relaxed font-medium">"{{ request.user_preferences|truncatewords:15 }}"</p>
+                        <div class="inline-flex items-center space-x-2 text-burgundy group-hover:text-ink transition-colors duration-200 text-base font-semibold group-hover:translate-x-1 transform transition-transform ">
+                            <span>View recommendations</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-2 text-right">
+                        <span class="text-sm text-gray-700 font-serif font-medium">{{ request.created_at|date:"M d, Y" }}</span>
+                        <span class="text-burgundy font-bold">•</span>
+                        <span class="text-sm text-gray-700 font-serif font-medium">{{ request.created_at|date:"H:i" }}</span>
+                    </div>
+                </div>
+            </div>
+        </a>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}

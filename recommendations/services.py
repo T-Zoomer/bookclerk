@@ -84,15 +84,7 @@ class BookRecommendationService:
             elif content.startswith('```'):
                 content = content.replace('```', '').strip()
             
-            print("CLEANED CONTENT FOR JSON PARSING:")
-            print(repr(content))
-            print("=" * 50)
-            
             recommendations = json.loads(content)
-            
-            print("PARSED RECOMMENDATIONS:")
-            print(recommendations)
-            print("=" * 50)
             
             # Handle different JSON structures
             if isinstance(recommendations, dict):
@@ -109,36 +101,17 @@ class BookRecommendationService:
                 # Convert single item to list
                 recommendations = [recommendations]
             
-            print("FINAL RECOMMENDATIONS LIST:")
-            print(recommendations)
-            print("=" * 50)
-            
             return recommendations
             
         except json.JSONDecodeError as e:
             print(f"JSON DECODE ERROR: {e}")
             print(f"FAILED TO PARSE: {repr(content)}")
             print("=" * 50)
-            # Fallback recommendations if JSON parsing fails
-            return self._get_fallback_recommendations()
+            # Raise the error to be handled by the view
+            raise Exception("Failed to parse AI response. Please try again.")
         except Exception as e:
             print(f"GENERAL ERROR: {e}")
             print("=" * 50)
-            return self._get_fallback_recommendations()
+            # Re-raise with a user-friendly message
+            raise Exception("Unable to get recommendations at this time. Please try again later.")
     
-    def _get_fallback_recommendations(self) -> List[Dict[str, str]]:
-        """Fallback recommendations in case of API errors."""
-        return [
-            {
-                "title": "The Midnight Library",
-                "author": "Matt Haig",
-                "description": "A philosophical novel about a magical library between life and death where the protagonist explores different versions of her life.",
-                "reason": "A thought-provoking book that appeals to readers who enjoy contemplating life's possibilities and philosophical themes."
-            },
-            {
-                "title": "Educated",
-                "author": "Tara Westover",
-                "description": "A memoir about a woman who grows up in a survivalist family in rural Idaho and eventually earns a PhD from Cambridge University.",
-                "reason": "An inspiring true story that showcases the power of education and personal transformation."
-            }
-        ]

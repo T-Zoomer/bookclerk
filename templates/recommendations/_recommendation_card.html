@@ -1,0 +1,57 @@
+<!-- Individual Recommendation Card -->
+<div class="bg-cream rounded-xl shadow-xl border border-burgundy-soft overflow-hidden hover:shadow-2xl transition-all duration-300 group relative">
+    <!-- Vintage book texture -->
+    <div class="absolute inset-0 opacity-5 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2280%22 height=%2280%22 viewBox=%220 0 80 80%22><g fill=%22%238b4513%22><circle cx=%2220%22 cy=%2220%22 r=%221%22 opacity=%220.1%22/><circle cx=%2260%22 cy=%2260%22 r=%220.8%22 opacity=%220.15%22/></g></svg>');"></div>
+    
+    <!-- Book spine decoration -->
+    <div class="absolute left-0 top-0 w-2 h-full bg-leather"></div>
+    <div class="absolute left-2 top-0 w-px h-full bg-gold/60"></div>
+    
+    <div class="p-8 ml-4 relative z-10">
+        <div class="flex items-start space-x-6">
+            <!-- Book Number Badge -->
+            <div class="flex-shrink-0">
+                <div class="w-16 h-16 bg-burgundy rounded-full flex items-center justify-center shadow-lg border-2 border-gold/40 group-hover:scale-110 transition-transform duration-300">
+                    <span class="text-cream font-bold text-xl font-serif">{{ forloop.counter }}</span>
+                </div>
+            </div>
+            
+            <div class="flex-1">
+                <!-- Book Title & Author -->
+                <div class="mb-2">
+                    <h3 class="text-3xl font-serif font-bold text-ink mb-1 leading-tight">{{ rec.title }}</h3>
+                    <div class="flex items-center space-x-2 text-leather">
+                        <p class="text-2xl font-serif italic">by {{ rec.author }}</p>
+                    </div>
+                </div>
+                
+                <!-- Description -->
+                <div class="mb-5">
+                    <p class="text-lg text-ink leading-relaxed font-serif">{{ rec.description }}</p>
+                </div>
+                
+                <!-- Recommendation Reason -->
+                <div class="bg-parchment rounded-lg border-2 border-gold shadow-md p-4 px-6 mb-6 relative">
+                    <h4 class="text-lg font-serif font-semibold text-leather mb-1">Why BookClerk recommends this:</h4>
+                    <p class="text-lg text-ink font-serif leading-relaxed">"{{ rec.reason }}"</p>
+                </div>
+                
+                <!-- Amazon Link -->
+                {% if rec.amazon_url %}
+                <div class="flex justify-end">
+                    <a href="{{ rec.amazon_url }}" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="bg-leather hover:bg-leather/90 text-cream px-6 py-3 rounded-lg text-lg font-serif font-medium transition-all duration-200 transform hover:scale-105 shadow-lg flex items-center space-x-2">
+                        <span>📚</span>
+                        <span>View Book</span>
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>

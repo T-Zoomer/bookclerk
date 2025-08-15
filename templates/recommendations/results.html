@@ -1,0 +1,19 @@
+{% extends 'recommendations/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="max-w-5xl mx-auto">
+    {% include 'recommendations/_results_header.html' %}
+
+    {% if recommendations %}
+        <!-- Recommendations Grid -->
+        <div class="space-y-8">
+            {% for rec in recommendations %}
+            {% include 'recommendations/_recommendation_card.html' %}
+            {% endfor %}
+        </div>
+    {% else %}
+        {% include 'recommendations/_no_recommendations.html' %}
+    {% endif %}
+</div>
+{% endblock %}

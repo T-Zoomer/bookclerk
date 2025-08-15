@@ -1,0 +1,54 @@
+{% load static %}
+<!-- Main Form Card -->
+<div class="bg-cream rounded-xl shadow-2xl border border-burgundy-soft p-10 mb-12 relative overflow-hidden">
+    <!-- Decorative paper texture overlay -->
+    <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22><g fill=%22%238b4513%22><path d=%22M0 0h60v60H0z%22 opacity=%220.02%22/><circle cx=%2210%22 cy=%2210%22 r=%220.8%22 opacity=%220.1%22/><circle cx=%2250%22 cy=%2250%22 r=%220.6%22 opacity=%220.08%22/></g></svg>');"></div>
+    
+    <!-- Vintage corners -->
+    <div class="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-gold/40"></div>
+    <div class="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-gold/40"></div>
+    <div class="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-gold/40"></div>
+    <div class="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-gold/40"></div>
+    
+    <div class="relative z-10">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-32 h-32 object-contain">
+            </div>
+            <div class="flex-1 text-center">
+                <h2 class="text-4xl font-serif font-semibold text-ink mb-3">What do you want to read?</h2>
+            </div>
+            <div class="w-32 h-32"></div>
+        </div>
+        
+        <form method="post" action="{% url 'get_recommendations' %}" class="space-y-6" id="recommendation-form">
+            {% csrf_token %}
+            <div>
+                
+                <div class="relative">
+                    <textarea 
+                        id="preferences" 
+                        name="preferences" 
+                        rows="2" 
+                        class="w-full px-6 py-4 border-2 border-gold/30 rounded-lg shadow-inner bg-parchment/50 focus:outline-none focus:ring-2 focus:ring-leather focus:border-leather transition-colors duration-200 font-serif text-lg text-ink placeholder-leather/50 resize-none overflow-hidden"
+                        placeholder=""
+                        data-placeholder="Example: I like science fiction with strong characters, mysteries set in small towns, or psychology books. Include genres, authors, or specific books you've enjoyed."
+                        required
+                        oninput="autoResize(this)"
+                    ></textarea>
+                    <!-- Decorative quill icon -->
+                    <div class="absolute bottom-3 right-3 text-gold/40 pointer-events-none">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z"/>
+                            <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex justify-end">
+                {% include 'recommendations/_recommendation_button.html' with button_type='submit' button_id='submit-btn' button_text='Discover Books' show_loading=True loading_text='Finding perfect books...' %}
+            </div>
+        </form>
+    </div>
+</div>
