@@ -2,12 +2,12 @@
 <button 
     type="{{ button_type|default:'button' }}" 
     id="{{ button_id }}"
-    class="bg-burgundy hover:bg-burgundy/90 text-cream font-serif font-bold py-4 px-8 rounded-lg shadow-xl border-3 border-gold hover:shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.05] active:scale-[0.95] {{ extra_classes }}"
+    class="bg-burgundy hover:bg-burgundy/90 text-cream font-serif font-bold py-3 md:py-4 px-6 md:px-8 rounded-lg shadow-xl border-3 border-gold hover:shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.05] active:scale-[0.95] {{ extra_classes }}"
     {% if show_loading %}onclick="showLoadingState('{{ button_id }}', '{{ loading_text|default:'Loading...' }}')"{% endif %}
 >
     <div class="btn-content flex items-center justify-center space-x-3">
         {% if icon %}<span class="text-lg">{{ icon }}</span>{% endif %}
-        <span class="text-xl">{{ button_text|default:'Submit' }}</span>
+        <span class="text-lg md:text-xl">{{ button_text|default:'Submit' }}</span>
     </div>
 </button>
 

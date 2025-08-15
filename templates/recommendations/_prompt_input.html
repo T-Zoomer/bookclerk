@@ -1,27 +1,27 @@
 {% load static %}
 <!-- Main Form Card -->
-<div class="bg-cream rounded-xl shadow-2xl border border-burgundy-soft p-10 mb-12 relative overflow-hidden">
+<div class="md:bg-cream md:rounded-xl md:shadow-2xl md:border md:border-burgundy-soft md:p-10 mb-6 md:mb-12 relative md:overflow-hidden">
     <!-- Decorative paper texture overlay -->
-    <div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22><g fill=%22%238b4513%22><path d=%22M0 0h60v60H0z%22 opacity=%220.02%22/><circle cx=%2210%22 cy=%2210%22 r=%220.8%22 opacity=%220.1%22/><circle cx=%2250%22 cy=%2250%22 r=%220.6%22 opacity=%220.08%22/></g></svg>');"></div>
+    <div class="hidden md:block absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22><g fill=%22%238b4513%22><path d=%22M0 0h60v60H0z%22 opacity=%220.02%22/><circle cx=%2210%22 cy=%2210%22 r=%220.8%22 opacity=%220.1%22/><circle cx=%2250%22 cy=%2250%22 r=%220.6%22 opacity=%220.08%22/></g></svg>');"></div>
     
     <!-- Vintage corners -->
-    <div class="absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-gold/40"></div>
-    <div class="absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-gold/40"></div>
-    <div class="absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-gold/40"></div>
-    <div class="absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-gold/40"></div>
+    <div class="hidden md:block absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-gold/40"></div>
+    <div class="hidden md:block absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-gold/40"></div>
+    <div class="hidden md:block absolute bottom-4 left-4 w-6 h-6 border-l-2 border-b-2 border-gold/40"></div>
+    <div class="hidden md:block absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-gold/40"></div>
     
-    <div class="relative z-10">
-        <div class="flex items-center justify-between mb-8">
-            <div>
+    <div class="relative md:z-10">
+        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-2 md:mb-8">
+            <div class="hidden md:block">
                 <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-32 h-32 object-contain">
             </div>
-            <div class="flex-1 text-center">
-                <h2 class="text-4xl font-serif font-semibold text-ink mb-3">What do you want to read?</h2>
+            <div class="flex-1 text-left md:text-center">
+                <h2 class="text-2xl md:text-4xl font-serif font-semibold text-ink mb-0 md:mb-3 pt-4 md:pt-0">What do you want to read?</h2>
             </div>
-            <div class="w-32 h-32"></div>
+            <div class="hidden md:block w-32 h-32"></div>
         </div>
         
-        <form method="post" action="{% url 'get_recommendations' %}" class="space-y-6" id="recommendation-form">
+        <form method="post" action="{% url 'get_recommendations' %}" class="space-y-2 md:space-y-6" id="recommendation-form">
             {% csrf_token %}
             <div>
                 
@@ -29,8 +29,8 @@
                     <textarea 
                         id="preferences" 
                         name="preferences" 
-                        rows="2" 
-                        class="w-full px-6 py-6 border border-gold rounded-lg bg-white focus:outline-none focus:ring-3 focus:ring-burgundy focus:border-burgundy focus:border-2 transition-all duration-200 font-serif text-xl text-ink placeholder-leather/60 resize-none overflow-hidden"
+                        rows="3" 
+                        class="w-full px-4 md:px-6 py-4 md:py-6 border border-gold rounded-lg bg-white focus:outline-none focus:ring-3 focus:ring-burgundy focus:border-burgundy focus:border-2 transition-all duration-200 font-serif text-lg md:text-xl text-ink placeholder-leather/60 resize-none overflow-hidden"
                         placeholder=""
                         data-placeholder="Example: I like science fiction with strong characters, mysteries set in small towns, or psychology books. Include genres, authors, or specific books you've enjoyed."
                         required
@@ -52,3 +52,75 @@
         </form>
     </div>
 </div>
+
+<script>
+function autoResize(textarea) {
+    // Reset height to get accurate scrollHeight
+    textarea.style.height = 'auto';
+    
+    // Calculate the line height
+    const lineHeight = parseInt(window.getComputedStyle(textarea).lineHeight);
+    const minRows = 2;
+    const maxRows = 10;
+    
+    // Calculate required rows based on scroll height
+    const rows = Math.min(maxRows, Math.max(minRows, Math.ceil(textarea.scrollHeight / lineHeight)));
+    
+    // Set the height
+    textarea.style.height = (rows * lineHeight) + 'px';
+}
+
+// Examples functionality
+const examples = [
+    "Books like Harry Potter.",
+    "Best literary fiction from Russian authors.",
+    "I enjoy literary fiction with unreliable narrators and beautiful prose, especially books that explore themes of memory and identity.",
+    "Mystery novels set in small towns.",
+    "I'm interested in non-fiction about psychology and human behavior, particularly books that explain cognitive biases and decision-making.",
+    "Science fiction about space exploration.",
+    "Romance books with strong female leads.",
+    "I love fantasy novels with complex magic systems like Brandon Sanderson's works, and I'm also drawn to cozy mysteries set in small English villages.",
+    "Non-fiction about personal development.",
+    "I'm looking for science fiction that explores social issues and dystopian futures, similar to Margaret Atwood or Ursula K. Le Guin."
+];
+
+let currentExampleIndex = Math.floor(Math.random() * examples.length);
+
+function updateExample() {
+    const textarea = document.getElementById('preferences');
+    if (textarea && textarea.value === '') {
+        textarea.placeholder = examples[currentExampleIndex];
+    }
+}
+
+function nextExample() {
+    currentExampleIndex = (currentExampleIndex + 1) % examples.length;
+    updateExample();
+}
+
+// Initialize examples and auto-rotation
+document.addEventListener('DOMContentLoaded', function() {
+    const textarea = document.getElementById('preferences');
+    if (textarea) {
+        // Initialize autoResize
+        autoResize(textarea);
+        
+        // Initialize examples
+        updateExample();
+        setInterval(nextExample, 4000); // Change example every 4 seconds
+        
+        // Clear auto-rotation when user starts typing
+        textarea.addEventListener('input', function() {
+            if (this.value !== '') {
+                this.placeholder = this.dataset.placeholder;
+            }
+        });
+        
+        textarea.addEventListener('blur', function() {
+            if (this.value === '') {
+                updateExample();
+            }
+        });
+    }
+});
+</script>

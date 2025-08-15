@@ -57,8 +57,8 @@ def view_recommendations(request, request_id):
     try:
         req = RecommendationRequest.objects.get(id=request_id)
         recommendations = req.recommendations.all()
-        return render(request, 'recommendations/results.html', {
-            'request': req,
+        return render(request, 'recommendations/recommendations.html', {
+            'recommendation_request': req,
             'recommendations': recommendations
         })
     except RecommendationRequest.DoesNotExist:

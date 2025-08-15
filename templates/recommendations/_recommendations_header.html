@@ -1,0 +1,23 @@
+{% load static %}
+<!-- Header Section -->
+<div class="mb-6 md:mb-10 relative">
+        <div class="flex justify-start mb-4">
+            <a href="{% url 'home' %}" class="text-leather hover:text-ink text-base md:text-lg font-serif transition-colors duration-200">
+                ← New Recommendation
+            </a>
+        </div>
+        <div class="flex flex-col items-center text-center mb-4 space-y-4">
+            <div class="hidden md:block">
+                <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-24 md:w-32 h-24 md:h-32 object-contain">
+            </div>
+            <h2 class="text-2xl md:text-4xl font-serif font-semibold text-ink">BookClerk's recommendations for</h2>
+        </div>
+        
+        <!-- Preferences Display -->
+        <div class="bg-white rounded-lg border border-gold/30 p-4 md:p-6 relative">
+            <div class="absolute top-2 left-2 text-gold/40 text-base md:text-lg">❝</div>
+            <div class="absolute bottom-2 right-2 text-gold/40 text-base md:text-lg">❞</div>
+            
+            <p class="text-ink font-serif text-lg md:text-2xl italic leading-relaxed text-center">{{ recommendation_request.user_preferences }}</p>
+        </div>
+</div>
