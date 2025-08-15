@@ -1,0 +1,83 @@
+{% extends 'recommendations/base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <div class="bg-white rounded-lg shadow-md p-8 mb-8">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-2xl font-bold text-gray-800">Your Book Recommendations</h2>
+            <a href="{% url 'home' %}" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                Get New Recommendations
+            </a>
+        </div>
+        
+        <div class="bg-gray-50 rounded-lg p-4 mb-6">
+            <h3 class="font-semibold text-gray-700 mb-2">Based on your preferences:</h3>
+            <p class="text-gray-600 italic">"{{ request.user_preferences }}"</p>
+            <p class="text-sm text-gray-500 mt-2">Generated on {{ request.created_at|date:"F d, Y \a\t H:i" }}</p>
+        </div>
+    </div>
+
+    {% if recommendations %}
+        <div class="space-y-6">
+            {% for rec in recommendations %}
+            <div class="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition duration-200">
+                <div class="flex items-start space-x-4">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <span class="text-blue-600 font-bold text-lg">{{ forloop.counter }}</span>
+                        </div>
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-xl font-bold text-gray-800 mb-1">{{ rec.title }}</h3>
+                        <p class="text-lg text-gray-600 mb-3">by {{ rec.author }}</p>
+                        
+                        <div class="mb-4">
+                            <h4 class="font-semibold text-gray-700 mb-2">Description:</h4>
+                            <p class="text-gray-600 leading-relaxed">{{ rec.description }}</p>
+                        </div>
+                        
+                        <div class="bg-blue-50 rounded-lg p-4 mb-4">
+                            <h4 class="font-semibold text-blue-800 mb-2">Why we recommend this:</h4>
+                            <p class="text-blue-700">{{ rec.reason }}</p>
+                        </div>
+                        
+                        {% if rec.amazon_url %}
+                        <div class="flex items-center justify-between bg-orange-50 rounded-lg p-4">
+                            <div class="flex items-center space-x-2">
+                                <svg class="w-5 h-5 text-orange-600" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                                </svg>
+                                <span class="text-orange-800 font-medium">Available on Amazon</span>
+                            </div>
+                            <a href="{{ rec.amazon_url }}" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               class="bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded-md font-medium transition duration-200 flex items-center space-x-2">
+                                <span>Buy on Amazon</span>
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                                </svg>
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="bg-white rounded-lg shadow-md p-8 text-center">
+            <div class="text-gray-400 mb-4">
+                <svg class="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                </svg>
+            </div>
+            <h3 class="text-xl font-semibold text-gray-600 mb-2">No recommendations found</h3>
+            <p class="text-gray-500">There was an issue generating recommendations for your request.</p>
+            <a href="{% url 'home' %}" class="inline-block mt-4 bg-blue-600 text-white px-6 py-2 rounded-md hover:bg-blue-700 transition duration-200">
+                Try Again
+            </a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
