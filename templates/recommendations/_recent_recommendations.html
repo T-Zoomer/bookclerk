@@ -1,7 +1,7 @@
 {% if recent_requests %}
 <!-- Recent Requests Section -->
 <div class="mb-6">
-    <h3 class="text-3xl font-serif font-bold text-ink mb-6">Recent Recommendations</h3>
+    <h3 class="text-xl md:text-2xl font-serif font-bold text-ink mb-6">Recent Recommendations</h3>
     
     <div class="space-y-3">
         {% for request in recent_requests %}
@@ -9,8 +9,8 @@
             <div class="bg-cream rounded-lg p-5 hover:shadow-lg hover:bg-cream/80 transition-all duration-200 group cursor-pointer">
                 <div class="flex items-start">
                     <div class="flex-1">
-                        <p class="text-lg text-gray-900 font-serif leading-relaxed font-medium">"{{ request.preferences|truncatewords:15 }}"</p>
-                        <div class="inline-flex items-center space-x-2 text-burgundy group-hover:text-ink transition-colors duration-200 text-base font-semibold group-hover:translate-x-1 transform transition-transform mt-2">
+                        <p class="text-sm md:text-lg text-gray-900 font-serif leading-relaxed font-medium">"{{ request.preferences|truncatewords:15 }}"</p>
+                        <div class="inline-flex items-center space-x-2 text-burgundy group-hover:text-ink transition-colors duration-200 text-sm md:text-base font-semibold group-hover:translate-x-1 transform transition-transform mt-2">
                             <span>View recommendations</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>

@@ -1,9 +1,7 @@
 {% load static %}
 <!-- Main Form Card -->
 <div class="md:bg-cream md:rounded-xl md:shadow-2xl md:border md:border-burgundy-soft md:p-10 mb-6 md:mb-12 relative md:overflow-hidden">
-    <!-- Decorative paper texture overlay -->
-    <div class="hidden md:block absolute inset-0 opacity-10 pointer-events-none" style="background-image: url('data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22><g fill=%22%238b4513%22><path d=%22M0 0h60v60H0z%22 opacity=%220.02%22/><circle cx=%2210%22 cy=%2210%22 r=%220.8%22 opacity=%220.1%22/><circle cx=%2250%22 cy=%2250%22 r=%220.6%22 opacity=%220.08%22/></g></svg>');"></div>
-    
+
     <!-- Vintage corners -->
     <div class="hidden md:block absolute top-4 left-4 w-6 h-6 border-l-2 border-t-2 border-gold/40"></div>
     <div class="hidden md:block absolute top-4 right-4 w-6 h-6 border-r-2 border-t-2 border-gold/40"></div>
@@ -11,12 +9,17 @@
     <div class="hidden md:block absolute bottom-4 right-4 w-6 h-6 border-r-2 border-b-2 border-gold/40"></div>
     
     <div class="relative md:z-10">
-        <div class="flex flex-col md:flex-row items-start md:items-center justify-between mb-2 md:mb-8">
+        <!-- Mobile logo - centered above text -->
+        <div class="flex justify-center md:hidden">
+            <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-24 h-24 object-contain">
+        </div>
+        
+        <div class="flex flex-col md:flex-row items-center justify-between mb-2 md:mb-8">
             <div class="hidden md:block">
                 <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-32 h-32 object-contain">
             </div>
-            <div class="flex-1 text-left md:text-center">
-                <h2 class="text-2xl md:text-4xl font-serif font-semibold text-ink mb-0 md:mb-3 pt-4 md:pt-0">What do you want to read?</h2>
+            <div class="flex justify-center text-center">
+                <h2 class="text-2xl md:text-4xl font-serif font-semibold text-ink md:mb-3">What do you want to read?</h2>
             </div>
             <div class="hidden md:block w-32 h-32"></div>
         </div>

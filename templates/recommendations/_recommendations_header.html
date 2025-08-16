@@ -1,12 +1,17 @@
 {% load static %}
 <!-- Header Section -->
 <div class="mb-6 md:mb-10 relative">
-        <div class="flex justify-start mb-4">
+        <div class="flex justify-start mb-6">
             <a href="{% url 'home' %}" class="text-leather hover:text-ink text-base md:text-lg font-serif transition-colors duration-200">
                 ← New Recommendation
             </a>
         </div>
-        <div class="flex flex-col items-center text-center mb-4 space-y-4">
+        <!-- Mobile logo - centered above text -->
+        <div class="flex justify-center md:hidden">
+            <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-24 h-24 object-contain">
+        </div>
+        
+        <div class="flex flex-col items-center text-center mb-2 md:mb-4 md:space-y-4">
             <div class="hidden md:block">
                 <img src="{% static 'BookClerk Logo.png' %}" alt="BookClerk Logo" class="w-24 md:w-32 h-24 md:h-32 object-contain">
             </div>

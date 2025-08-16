@@ -55,6 +55,7 @@
     <div class="hidden md:block fixed left-2 top-0 w-1 h-full bg-gold opacity-60 z-10"></div>
     
     {% include 'recommendations/_header.html' %}
+    {% include 'recommendations/_mobile_menu.html' %}
 
     <main class="px-4 md:px-6 py-6 md:py-12 relative">
         <!-- Subtle page texture -->
@@ -71,5 +72,54 @@
 
     {% include 'recommendations/_footer.html' %}
     
+    <script>
+        // Mobile menu toggle functionality
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMenuBtn = document.getElementById('close-menu');
+        const menuPanel = document.getElementById('menu-panel');
+        let isMenuOpen = false;
+
+        function openMenu() {
+            isMenuOpen = true;
+            mobileMenu.classList.remove('opacity-0', 'invisible');
+            mobileMenu.classList.add('opacity-100', 'visible');
+            menuPanel.classList.remove('-translate-x-full');
+            menuPanel.classList.add('translate-x-0');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            isMenuOpen = false;
+            mobileMenu.classList.remove('opacity-100', 'visible');
+            mobileMenu.classList.add('opacity-0', 'invisible');
+            menuPanel.classList.remove('translate-x-0');
+            menuPanel.classList.add('-translate-x-full');
+            document.body.style.overflow = '';
+        }
+
+        if (menuToggle) {
+            menuToggle.addEventListener('click', function() {
+                if (isMenuOpen) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+        }
+
+        if (closeMenuBtn) {
+            closeMenuBtn.addEventListener('click', closeMenu);
+        }
+
+        if (mobileMenu) {
+            // Close menu when clicking outside
+            mobileMenu.addEventListener('click', function(e) {
+                if (e.target === mobileMenu) {
+                    closeMenu();
+                }
+            });
+        }
+    </script>
 </body>
 </html>
