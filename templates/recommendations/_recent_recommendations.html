@@ -9,7 +9,7 @@
             <div class="bg-cream rounded-lg p-5 hover:shadow-lg hover:bg-cream/80 transition-all duration-200 group cursor-pointer">
                 <div class="flex items-start">
                     <div class="flex-1">
-                        <p class="text-lg text-gray-900 font-serif leading-relaxed font-medium">"{{ request.user_preferences|truncatewords:15 }}"</p>
+                        <p class="text-lg text-gray-900 font-serif leading-relaxed font-medium">"{{ request.preferences|truncatewords:15 }}"</p>
                         <div class="inline-flex items-center space-x-2 text-burgundy group-hover:text-ink transition-colors duration-200 text-base font-semibold group-hover:translate-x-1 transform transition-transform mt-2">
                             <span>View recommendations</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

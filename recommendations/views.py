@@ -7,7 +7,8 @@ from .services import BookRecommendationService
 
 def home(request):
     """Homepage with form to enter preferences."""
-    recent_requests = RecommendationRequest.objects.order_by('-created_at')[:10]
+    # Get recent requests from session
+    recent_requests = request.session.get('recent_requests', [])
     return render(request, 'recommendations/home.html', {'recent_requests': recent_requests})
 
 
@@ -44,6 +45,16 @@ def get_recommendations(request):
                 reason=rec_data.get('reason', 'No reason provided.'),
                 amazon_url=amazon_url
             )
+        
+        # Add to session recent requests
+        recent_requests = request.session.get('recent_requests', [])
+        recent_requests.insert(0, {
+            'id': req.id,
+            'preferences': user_preferences,
+            'created_at': req.created_at.isoformat()
+        })
+        # Keep only last 10
+        request.session['recent_requests'] = recent_requests[:10]
         
         return redirect('view_recommendations', request_id=req.id)
         
