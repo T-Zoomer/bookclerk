@@ -31,6 +31,8 @@ DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
 ALLOWED_HOSTS = ['*'] if DEBUG else ['.railway.app', 'localhost', '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://*.railway.app'] if not DEBUG else []
+
 
 # Application definition
 
