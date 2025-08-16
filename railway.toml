@@ -1,9 +1,0 @@
-[build]
-builder = "nixpacks"
-
-[deploy]
-startCommand = "python manage.py migrate && gunicorn bookclerk_project.wsgi:application --bind 0.0.0.0:$PORT"
-healthcheckPath = "/"
-
-[deploy.envs]
-RAILWAY_STATIC_URL = "/static/"

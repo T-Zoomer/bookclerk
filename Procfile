@@ -1,0 +1,1 @@
+web: gunicorn bookclerk_project.wsgi --log-file -
