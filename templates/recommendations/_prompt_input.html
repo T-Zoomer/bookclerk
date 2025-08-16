@@ -49,8 +49,20 @@
                 </div>
             </div>
             
-            <div class="flex justify-end">
-                {% include 'recommendations/_recommendation_button.html' with button_type='submit' button_id='submit-btn' button_text='Discover Books' show_loading=True loading_text='Finding perfect books...' %}
+            <div class="flex justify-between items-center">
+                {% if recent_requests %}
+                <button type="button" id="view-recent-btn" class="text-burgundy/70 hover:text-burgundy transition-colors text-sm md:text-base font-serif flex items-center space-x-1 group">
+                    <svg class="w-4 h-4 group-hover:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <span>View recent recommendations</span>
+                </button>
+                {% else %}
+                <div></div>
+                {% endif %}
+                <div>
+                    {% include 'recommendations/_recommendation_button.html' with button_type='submit' button_id='submit-btn' button_text='Discover Books' show_loading=True loading_text='Finding perfect books...' %}
+                </div>
             </div>
         </form>
     </div>
@@ -122,6 +134,17 @@ document.addEventListener('DOMContentLoaded', function() {
         textarea.addEventListener('blur', function() {
             if (this.value === '') {
                 updateExample();
+            }
+        });
+    }
+    
+    // View recent recommendations button
+    const viewRecentBtn = document.getElementById('view-recent-btn');
+    if (viewRecentBtn) {
+        viewRecentBtn.addEventListener('click', function() {
+            // Check if openRecentMenu function exists (from base.html)
+            if (typeof openRecentMenu === 'function') {
+                openRecentMenu();
             }
         });
     }

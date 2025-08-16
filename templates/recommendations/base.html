@@ -56,7 +56,8 @@
     <div class="hidden md:block fixed left-2 top-0 w-1 h-full bg-gold opacity-60 z-10"></div>
     
     {% include 'recommendations/_header.html' %}
-    {% include 'recommendations/_mobile_menu.html' %}
+    {% include 'recommendations/_hamburger_menu.html' %}
+    {% include 'recommendations/_hamburger_menu_recent.html' %}
 
     <main class="px-4 md:px-6 py-6 md:py-12 relative">
         <!-- Subtle page texture -->
@@ -71,20 +72,28 @@
         </div> 
     </main>
 
-    {% include 'recommendations/_footer.html' %}
     
     <script>
-        // Mobile menu toggle functionality
+        // Hamburger menu toggle functionality
         const menuToggle = document.getElementById('menu-toggle');
-        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerMenu = document.getElementById('hamburger-menu');
         const closeMenuBtn = document.getElementById('close-menu');
         const menuPanel = document.getElementById('menu-panel');
+        
+        // Recent recommendations menu elements
+        const hamburgerMenuRecent = document.getElementById('hamburger-menu-recent');
+        const closeMenuRecentBtn = document.getElementById('close-menu-recent');
+        const menuPanelRecent = document.getElementById('menu-panel-recent');
+        const openRecentMenuBtn = document.getElementById('open-recent-menu');
+        const backToMainMenuBtn = document.getElementById('back-to-main-menu');
+        
         let isMenuOpen = false;
+        let isRecentMenuOpen = false;
 
         function openMenu() {
             isMenuOpen = true;
-            mobileMenu.classList.remove('opacity-0', 'invisible');
-            mobileMenu.classList.add('opacity-100', 'visible');
+            hamburgerMenu.classList.remove('opacity-0', 'invisible');
+            hamburgerMenu.classList.add('opacity-100', 'visible');
             menuPanel.classList.remove('-translate-x-full');
             menuPanel.classList.add('translate-x-0');
             document.body.style.overflow = 'hidden';
@@ -92,17 +101,52 @@
 
         function closeMenu() {
             isMenuOpen = false;
-            mobileMenu.classList.remove('opacity-100', 'visible');
-            mobileMenu.classList.add('opacity-0', 'invisible');
+            hamburgerMenu.classList.remove('opacity-100', 'visible');
+            hamburgerMenu.classList.add('opacity-0', 'invisible');
             menuPanel.classList.remove('translate-x-0');
             menuPanel.classList.add('-translate-x-full');
             document.body.style.overflow = '';
+        }
+
+        function openRecentMenu() {
+            // Close main menu first
+            closeMenu();
+            
+            // Open recent menu
+            isRecentMenuOpen = true;
+            hamburgerMenuRecent.classList.remove('opacity-0', 'invisible');
+            hamburgerMenuRecent.classList.add('opacity-100', 'visible');
+            menuPanelRecent.classList.remove('-translate-x-full');
+            menuPanelRecent.classList.add('translate-x-0');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeRecentMenu() {
+            isRecentMenuOpen = false;
+            hamburgerMenuRecent.classList.remove('opacity-100', 'visible');
+            hamburgerMenuRecent.classList.add('opacity-0', 'invisible');
+            menuPanelRecent.classList.remove('translate-x-0');
+            menuPanelRecent.classList.add('-translate-x-full');
+            document.body.style.overflow = '';
+        }
+
+        function closeAllMenus() {
+            closeMenu();
+            closeRecentMenu();
+        }
+
+        function backToMainMenu() {
+            // Close recent menu and open main menu
+            closeRecentMenu();
+            openMenu();
         }
 
         if (menuToggle) {
             menuToggle.addEventListener('click', function() {
                 if (isMenuOpen) {
                     closeMenu();
+                } else if (isRecentMenuOpen) {
+                    closeRecentMenu();
                 } else {
                     openMenu();
                 }
@@ -113,11 +157,32 @@
             closeMenuBtn.addEventListener('click', closeMenu);
         }
 
-        if (mobileMenu) {
+        if (closeMenuRecentBtn) {
+            closeMenuRecentBtn.addEventListener('click', closeRecentMenu);
+        }
+
+        if (openRecentMenuBtn) {
+            openRecentMenuBtn.addEventListener('click', openRecentMenu);
+        }
+
+        if (backToMainMenuBtn) {
+            backToMainMenuBtn.addEventListener('click', backToMainMenu);
+        }
+
+        if (hamburgerMenu) {
             // Close menu when clicking outside
-            mobileMenu.addEventListener('click', function(e) {
-                if (e.target === mobileMenu) {
+            hamburgerMenu.addEventListener('click', function(e) {
+                if (e.target === hamburgerMenu) {
                     closeMenu();
+                }
+            });
+        }
+
+        if (hamburgerMenuRecent) {
+            // Close recent menu when clicking outside
+            hamburgerMenuRecent.addEventListener('click', function(e) {
+                if (e.target === hamburgerMenuRecent) {
+                    closeRecentMenu();
                 }
             });
         }

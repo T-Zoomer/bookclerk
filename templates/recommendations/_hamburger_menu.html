@@ -1,5 +1,5 @@
-<!-- Menu Overlay -->
-<div id="mobile-menu" class="fixed inset-0 bg-parchment/95 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300 ease-out">
+<!-- Hamburger Menu Overlay -->
+<div id="hamburger-menu" class="fixed inset-0 bg-parchment/95 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300 ease-out">
     <div id="menu-panel" class="absolute top-0 left-0 w-full sm:w-96 h-full bg-cream sm:border-r border-leather/20 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out">
         <!-- Close Button -->
         <button id="close-menu" class="absolute top-6 left-6 text-burgundy hover:text-leather transition-colors z-50">
@@ -9,7 +9,8 @@
         </button>
         
         <div class="p-6 pt-24">
-            <!-- Navigation Links -->
+            {% block hamburger_content %}
+            <!-- Default content -->
             <div class="pb-6 space-y-4 border-b border-leather/20">
                 <a href="{% url 'home' %}" class="flex items-center text-ink hover:text-burgundy transition-colors text-lg font-medium font-serif">
                     Home
@@ -20,12 +21,11 @@
                 <a href="#" class="block text-ink hover:text-burgundy transition-colors text-lg font-medium font-serif">
                     Contact
                 </a>
-                <a href="#" class="block text-ink hover:text-burgundy transition-colors text-lg font-medium font-serif">
-                    My Recommendations
-                </a>
+                <button id="open-recent-menu" class="block text-ink hover:text-burgundy transition-colors text-lg font-medium font-serif text-left w-full">
+                    My Recent Recommendations
+                </button>
             </div>
 
-            <!-- Search Section -->
             <div class="pt-6">
                 <h3 class="text-ink font-medium mb-3 font-serif">Search Books</h3>
                 <form method="get" action="{% url 'home' %}">
@@ -40,6 +40,7 @@
                     </div>
                 </form>
             </div>
+            {% endblock hamburger_content %}
         </div>
     </div>
 </div>
