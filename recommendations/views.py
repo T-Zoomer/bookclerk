@@ -68,9 +68,12 @@ def view_recommendations(request, request_id):
     try:
         req = RecommendationRequest.objects.get(id=request_id)
         recommendations = req.recommendations.all()
+        # Get recent requests from session for the hamburger menu
+        recent_requests = request.session.get('recent_requests', [])
         return render(request, 'recommendations/recommendations.html', {
             'recommendation_request': req,
-            'recommendations': recommendations
+            'recommendations': recommendations,
+            'recent_requests': recent_requests
         })
     except RecommendationRequest.DoesNotExist:
         messages.error(request, 'Recommendations not found.')

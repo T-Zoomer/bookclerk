@@ -131,6 +131,17 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
         
+        // Submit form when Enter is pressed (but allow Shift+Enter for new lines)
+        textarea.addEventListener('keydown', function(event) {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                const submitBtn = document.getElementById('submit-btn');
+                if (submitBtn && this.value.trim() !== '') {
+                    submitBtn.click();
+                }
+            }
+        });
+        
         textarea.addEventListener('blur', function() {
             if (this.value === '') {
                 updateExample();
