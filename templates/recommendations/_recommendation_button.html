@@ -2,7 +2,7 @@
 <button 
     type="{{ button_type|default:'button' }}" 
     id="{{ button_id }}"
-    class="bg-burgundy hover:bg-burgundy/90 text-cream font-serif font-bold py-3 md:py-4 px-6 md:px-8 rounded-lg shadow-xl border-3 border-gold hover:shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed hover:scale-[1.05] active:scale-[0.95] {{ extra_classes }}"
+    class="bg-burgundy hover:-translate-y-1 text-cream font-serif font-bold py-3 md:py-4 px-6 md:px-8 rounded-lg shadow-xl border-3 border-gold hover:shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.95] {{ extra_classes }}"
     {% if show_loading %}onclick="showLoadingState('{{ button_id }}', '{{ loading_text|default:'Loading...' }}')"{% endif %}
 >
     <div class="btn-content flex items-center justify-center space-x-3">
@@ -19,18 +19,18 @@ function showLoadingState(buttonId, loadingText) {
     
     if (submitBtn && btnContent) {
         submitBtn.disabled = true;
-        submitBtn.classList.add('animate-pulse');
+        submitBtn.classList.add('animate-pulse', 'bg-burgundy/70');
         btnContent.innerHTML = `
             <div class="flex items-center space-x-2">
                 <div class="w-5 h-4 relative">
-                    <div class="w-1 h-4 bg-gold absolute left-0 animate-bounce"></div>
-                    <div class="w-4 h-3 bg-cream absolute right-0 top-0.5 rounded-r-sm animate-pulse"></div>
+                    <div class="w-1 h-4 bg-cream absolute left-0 animate-bounce"></div>
+                    <div class="w-4 h-3 bg-burgundy absolute right-0 top-0.5 rounded-r-sm animate-pulse"></div>
                 </div>
                 <span>${loadingText}</span>
                 <div class="flex space-x-1">
-                    <div class="w-1 h-1 bg-gold rounded-full animate-bounce" style="animation-delay: 0s"></div>
-                    <div class="w-1 h-1 bg-gold rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-                    <div class="w-1 h-1 bg-gold rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                    <div class="w-1 h-1 bg-cream rounded-full animate-bounce" style="animation-delay: 0s"></div>
+                    <div class="w-1 h-1 bg-cream rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
+                    <div class="w-1 h-1 bg-cream rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
                 </div>
             </div>
         `;

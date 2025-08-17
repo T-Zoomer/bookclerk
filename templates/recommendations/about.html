@@ -1,0 +1,118 @@
+{% extends 'recommendations/base.html' %}
+{% load static %}
+
+{% block title %}About - BookClerk.AI{% endblock %}
+{% block description %}Learn how BookClerk.AI works and discover how our AI-powered system provides personalized book recommendations based on your reading preferences.{% endblock %}
+{% block keywords %}about BookClerk.AI, how it works, AI book recommendations, book discovery platform, personalized reading{% endblock %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto">
+    <header class="text-center mb-12">
+        <h1 class="text-3xl md:text-5xl font-serif font-semibold text-ink mb-4">How It Works</h1>
+        <p class="text-xl md:text-2xl text-ink/70 font-serif">Discover your next favorite book with AI-powered recommendations</p>
+    </header>
+    
+    <section class="mb-16">
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="space-y-3 text-center">
+                <div class="w-16 h-16 bg-burgundy/10 rounded-full flex items-center justify-center mx-auto">
+                    <svg class="w-8 h-8 text-burgundy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-serif font-semibold text-ink">Tell BookClerk What You Like</h3>
+                <p class="text-ink/70 font-serif">Describe your reading preferences, favorite genres, or specific books you've enjoyed.</p>
+            </div>
+            
+            <div class="space-y-3 text-center">
+                <div class="w-16 h-16 bg-burgundy/10 rounded-full flex items-center justify-center mx-auto">
+                    <svg class="w-8 h-8 text-burgundy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-serif font-semibold text-ink">AI Analysis</h3>
+                <p class="text-ink/70 font-serif">Our AI analyzes your preferences and matches them with thousands of books.</p>
+            </div>
+            
+            <div class="space-y-3 text-center">
+                <div class="w-16 h-16 bg-burgundy/10 rounded-full flex items-center justify-center mx-auto">
+                    <svg class="w-8 h-8 text-burgundy" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C20.832 18.477 19.246 18 17.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                <h3 class="text-xl font-serif font-semibold text-ink">Discover Books</h3>
+                <p class="text-ink/70 font-serif">Get personalized recommendations with detailed explanations for each suggestion.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-cream rounded-xl p-8 md:p-12 md:border md:border-burgundy-soft -mx-4 md:-mx-6">
+        <h2 class="text-2xl md:text-3xl font-serif font-semibold text-ink mb-6 text-center">Why BookClerk.AI?</h2>
+        <div class="prose prose-lg font-serif text-ink max-w-none">
+            <p class="text-lg leading-relaxed mb-6">
+                Finding your next great read shouldn't be a challenge. BookClerk.AI combines the power of artificial intelligence with a deep understanding of literature to provide you with book recommendations that truly match your taste.
+            </p>
+            <p class="text-lg leading-relaxed mb-6">
+                Whether you're looking for books similar to your favorites, want to explore new genres, or need recommendations based on specific themes or moods, our AI analyzes your preferences and suggests books you're likely to love.
+            </p>
+        </div>
+        
+        <div class="mt-8 mb-8">
+            <h3 class="text-xl font-serif font-semibold text-ink mb-4 text-center">AI vs Human Book Clerk</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-burgundy/20 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="bg-burgundy/10">
+                            <th class="border border-burgundy/20 px-4 py-3 text-left font-serif font-semibold text-ink">Feature</th>
+                            <th class="border border-burgundy/20 px-4 py-3 text-center font-serif font-semibold text-ink">BookClerk.AI</th>
+                            <th class="border border-burgundy/20 px-4 py-3 text-center font-serif font-semibold text-ink">Human Book Clerk</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-serif">
+                        <tr>
+                            <td class="border border-burgundy/20 px-4 py-3 font-medium text-ink">Availability</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Always in your pocket</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Store hours only</td>
+                        </tr>
+                        <tr class="bg-parchment/50">
+                            <td class="border border-burgundy/20 px-4 py-3 font-medium text-ink">Knowledge Base</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">All the books on the internet</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Fallible human memory</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-burgundy/20 px-4 py-3 font-medium text-ink">Bias</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Model bias</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Personal preferences</td>
+                        </tr>
+                        <tr>
+                            <td class="border border-burgundy/20 px-4 py-3 font-medium text-ink">Intelligence</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Textual thinking</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Human smarts</td>
+                        </tr>
+                        <tr class="bg-parchment/50">
+                            <td class="border border-burgundy/20 px-4 py-3 font-medium text-ink">Contact</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Robotic</td>
+                            <td class="border border-burgundy/20 px-4 py-3 text-center text-ink/70">Personal touch</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="prose prose-lg font-serif text-ink max-w-none">
+            <p class="text-lg leading-relaxed">
+                Get started by telling us about your reading preferences, and let BookClerk.AI help you discover your next favorite book.
+            </p>
+        </div>
+        
+        <div class="text-center mt-8">
+            <a href="{% url 'home' %}" class="inline-flex items-center px-6 py-3 bg-burgundy text-cream font-serif text-lg rounded-lg hover:bg-burgundy-soft transition-colors duration-200">
+                Start Getting Recommendations
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+            </a>
+        </div>
+    </section>
+</div>
+{% endblock %}

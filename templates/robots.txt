@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+Disallow: /recommendations/*/
+
+# Crawl-delay for search engines
+Crawl-delay: 1
+
+# Sitemap location (update with your actual domain)
+# Sitemap: https://yourdomain.com/sitemap.xml

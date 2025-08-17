@@ -32,7 +32,6 @@ class BookRecommendationService:
         amazon_link = (
             f"{settings.AMAZON_BASE_URL}/s?"
             f"k={encoded_query}&"
-            f"i=stripbooks&"
             f"tag={settings.AMAZON_AFFILIATE_TAG}"
         )
         

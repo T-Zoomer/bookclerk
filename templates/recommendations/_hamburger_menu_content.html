@@ -1,0 +1,19 @@
+{% extends "recommendations/_hamburger_menu_base.html" %}
+
+{% block menu_content %}
+<!-- Default content -->
+<div class="pb-6 space-y-4 border-b border-leather/20">
+    <a href="{% url 'home' %}" class="flex items-center text-ink hover:text-burgundy transition-colors text-lg font-medium font-serif">
+        Home
+    </a>
+    <a href="{% url 'about' %}" class="block text-ink hover:text-burgundy transition-colors text-lg font-medium font-serif">
+        About
+    </a>
+    <a href="#" class="block text-ink hover:text-burgundy transition-colors text-lg font-medium font-serif">
+        Contact
+    </a>
+    <button id="open-recent-menu" class="block text-ink hover:text-burgundy transition-colors text-lg font-medium font-serif text-left w-full">
+        My Recent Recommendations
+    </button>
+</div>
+{% endblock %}

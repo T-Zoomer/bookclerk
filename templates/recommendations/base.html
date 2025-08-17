@@ -4,12 +4,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BookClerk - AI Book Recommendations</title>
-    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>{% block title %}BookClerk.AI - AI-Powered Book Recommendations{% endblock %}</title>
+    <meta name="description" content="{% block description %}Get personalized book recommendations using AI. Discover your next favorite book based on your reading preferences and interests.{% endblock %}">
+    <meta name="keywords" content="{% block keywords %}book recommendations, AI books, reading suggestions, book discovery, personalized books, book finder{% endblock %}">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="BookClerk.AI">
+    <link rel="canonical" href="{% block canonical %}{{ request.build_absolute_uri }}{% endblock %}">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:url" content="{{ request.build_absolute_uri }}">
+    <meta property="og:title" content="{% block og_title %}BookClerk.AI - AI-Powered Book Recommendations{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}Get personalized book recommendations using AI. Discover your next favorite book based on your reading preferences and interests.{% endblock %}">
+    <meta property="og:image" content="{% block og_image %}{% static 'images/favicon.png' %}{% endblock %}">
+    <meta property="og:site_name" content="BookClerk.AI">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
+    <meta property="twitter:title" content="{% block twitter_title %}BookClerk.AI - AI-Powered Book Recommendations{% endblock %}">
+    <meta property="twitter:description" content="{% block twitter_description %}Get personalized book recommendations using AI. Discover your next favorite book based on your reading preferences and interests.{% endblock %}">
+    <meta property="twitter:image" content="{% block twitter_image %}{% static 'images/favicon.png' %}{% endblock %}">
+    
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"
+          alt="BookClerk.AI favicon - book icon representing AI-powered reading recommendations">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -56,8 +79,8 @@
     <div class="hidden md:block fixed left-2 top-0 w-1 h-full bg-gold opacity-60 z-10"></div>
     
     {% include 'recommendations/_header.html' %}
-    {% include 'recommendations/_hamburger_menu.html' %}
-    {% include 'recommendations/_hamburger_menu_recent.html' %}
+    {% include "recommendations/_hamburger_menu_content.html" with menu_id="hamburger-menu" panel_id="menu-panel" close_button_id="close-menu" %}
+    {% include "recommendations/_hamburger_menu_recent_content.html" with menu_id="hamburger-menu-recent" panel_id="menu-panel-recent" close_button_id="close-menu-recent" %}
 
     <main class="px-4 md:px-6 py-6 md:py-12 relative">
         <!-- Subtle page texture -->
@@ -94,7 +117,7 @@
             isMenuOpen = true;
             hamburgerMenu.classList.remove('opacity-0', 'invisible');
             hamburgerMenu.classList.add('opacity-100', 'visible');
-            menuPanel.classList.remove('-translate-x-full');
+            menuPanel.classList.remove('translate-x-full');
             menuPanel.classList.add('translate-x-0');
             document.body.style.overflow = 'hidden';
         }
@@ -104,7 +127,7 @@
             hamburgerMenu.classList.remove('opacity-100', 'visible');
             hamburgerMenu.classList.add('opacity-0', 'invisible');
             menuPanel.classList.remove('translate-x-0');
-            menuPanel.classList.add('-translate-x-full');
+            menuPanel.classList.add('translate-x-full');
             document.body.style.overflow = '';
         }
 
@@ -116,7 +139,7 @@
             isRecentMenuOpen = true;
             hamburgerMenuRecent.classList.remove('opacity-0', 'invisible');
             hamburgerMenuRecent.classList.add('opacity-100', 'visible');
-            menuPanelRecent.classList.remove('-translate-x-full');
+            menuPanelRecent.classList.remove('translate-x-full');
             menuPanelRecent.classList.add('translate-x-0');
             document.body.style.overflow = 'hidden';
         }
@@ -126,7 +149,7 @@
             hamburgerMenuRecent.classList.remove('opacity-100', 'visible');
             hamburgerMenuRecent.classList.add('opacity-0', 'invisible');
             menuPanelRecent.classList.remove('translate-x-0');
-            menuPanelRecent.classList.add('-translate-x-full');
+            menuPanelRecent.classList.add('translate-x-full');
             document.body.style.overflow = '';
         }
 

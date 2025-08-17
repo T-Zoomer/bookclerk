@@ -12,6 +12,11 @@ def home(request):
     return render(request, 'recommendations/home.html', {'recent_requests': recent_requests})
 
 
+def about(request):
+    """About page explaining how BookClerk.AI works."""
+    return render(request, 'recommendations/about.html')
+
+
 @require_http_methods(["POST"])
 def get_recommendations(request):
     """Process user preferences and get book recommendations."""

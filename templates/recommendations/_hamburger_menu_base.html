@@ -1,0 +1,17 @@
+<!-- Hamburger Menu Overlay Base Template -->
+<div id="{{ menu_id }}" class="fixed inset-0 bg-parchment/95 backdrop-blur-sm z-40 opacity-0 invisible transition-all duration-300 ease-out">
+    <div id="{{ panel_id }}" class="absolute top-0 right-0 w-full sm:w-96 h-full bg-cream sm:border-l border-leather/20 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out">
+        <!-- Close Button -->
+        <button id="{{ close_button_id }}" class="absolute top-6 right-6 text-burgundy hover:text-leather transition-colors z-50">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+            </svg>
+        </button>
+        
+        {% block back_button %}{% endblock %}
+        
+        <div class="p-6 pt-24 {% block content_classes %}{% endblock %}">
+            {% block menu_content %}{% endblock %}
+        </div>
+    </div>
+</div>
