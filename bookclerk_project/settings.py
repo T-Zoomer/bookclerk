@@ -133,5 +133,5 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # OpenAI API Configuration
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 # Amazon Affiliate Configuration
-AMAZON_AFFILIATE_TAG = os.getenv('AMAZON_AFFILIATE_TAG', 'your-affiliate-tag-20')
+AMAZON_AFFILIATE_TAG = "bookclerk09-20"
 AMAZON_BASE_URL = 'https://www.amazon.com'

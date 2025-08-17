@@ -2,7 +2,7 @@
 <button 
     type="{{ button_type|default:'button' }}" 
     id="{{ button_id }}"
-    class="bg-burgundy hover:-translate-y-1 text-cream font-serif font-bold py-3 md:py-4 px-6 md:px-8 rounded-lg shadow-xl border-3 border-gold hover:shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.95] {{ extra_classes }}"
+    class="bg-burgundy hover:-translate-y-1 text-cream font-serif font-bold py-3 md:py-4 px-6 md:px-8 rounded shadow-xl border-3 border-gold hover:shadow-2xl transition-all duration-200 flex items-center justify-center space-x-3 disabled:opacity-50 disabled:cursor-not-allowed active:scale-[0.95] {{ extra_classes }}"
     {% if show_loading %}onclick="showLoadingState('{{ button_id }}', '{{ loading_text|default:'Loading...' }}')"{% endif %}
 >
     <div class="btn-content flex items-center justify-center space-x-3">
