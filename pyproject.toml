@@ -11,4 +11,5 @@ dependencies = [
     "gunicorn>=21.0",
     "whitenoise>=6.0",
     "psycopg2-binary>=2.9",
+    "dj-database-url>=2.0",
 ]

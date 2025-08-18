@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 from pathlib import Path
 import os
 from dotenv import load_dotenv
+import dj_database_url
 
 load_dotenv(override=True)
 
@@ -97,20 +98,28 @@ elif DEBUG:
         }
     }
 else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.postgresql',
-            'NAME': os.getenv('PGDATABASE'),
-            'USER': os.getenv('PGUSER'),
-            'PASSWORD': os.getenv('PGPASSWORD'),
-            'HOST': os.getenv('PGHOST'),
-            'PORT': os.getenv('PGPORT', 5432),
-            'CONN_MAX_AGE': 0,  # Prevent connection hanging
-            'OPTIONS': {
-                'connect_timeout': 10,
+    # Use DATABASE_URL if available (Railway provides this)
+    database_url = os.getenv('DATABASE_URL')
+    if database_url:
+        DATABASES = {
+            'default': dj_database_url.parse(database_url, conn_max_age=0)
+        }
+    else:
+        # Fallback to individual environment variables
+        DATABASES = {
+            'default': {
+                'ENGINE': 'django.db.backends.postgresql',
+                'NAME': os.getenv('PGDATABASE'),
+                'USER': os.getenv('PGUSER'),
+                'PASSWORD': os.getenv('PGPASSWORD'),
+                'HOST': os.getenv('PGHOST'),
+                'PORT': os.getenv('PGPORT', 5432),
+                'CONN_MAX_AGE': 0,  # Prevent connection hanging
+                'OPTIONS': {
+                    'connect_timeout': 10,
+                }
             }
         }
-    }
 
 
 # Password validation
