@@ -11,12 +11,12 @@
     <div class="relative md:z-10">
         <!-- Mobile logo - centered above text -->
         <div class="flex justify-center md:hidden">
-            <img src="{% static 'images/favicon.png' %}" alt="BookClerk Logo" class="w-24 h-24 object-contain">
+            <img src="{% static 'images/logo.png' %}" alt="BookClerk Logo" class="w-24 h-24 object-contain">
         </div>
         
         <div class="flex flex-col md:flex-row items-center justify-between mb-2 md:mb-8 lg:mb-6 xl:mb-4">
             <div class="hidden md:block">
-                <img src="{% static 'images/favicon.png' %}" alt="BookClerk Logo" class="w-32 h-32 object-contain">
+                <img src="{% static 'images/logo.png' %}" alt="BookClerk Logo" class="w-32 h-32 object-contain">
             </div>
             <div class="flex justify-center text-center">
                 <h2 class="text-2xl md:text-4xl font-serif font-semibold text-ink md:mb-3">What do you want to read?</h2>
@@ -87,6 +87,7 @@ function autoResize(textarea) {
 
 // Examples functionality
 const examples = [
+    "Non-fiction books on the future of artificial intelligence.",
     "Books like Harry Potter.",
     "Best literary fiction from Russian authors.",
     "I enjoy literary fiction with unreliable narrators and beautiful prose, especially books that explore themes of memory and identity.",
@@ -94,8 +95,8 @@ const examples = [
     "I'm interested in non-fiction about psychology and human behavior, particularly books that explain cognitive biases and decision-making.",
     "Science fiction books that are critically acclaimed but not well known.",
     "Romance books with strong female leads.",
-    "I love fantasy novels with complex magic systems like Brandon Sanderson's works, and I'm also drawn to cozy mysteries set in small English villages.",
-    "Non-fiction about personal development and dealing, specifically on dealing with trauma.",
+    "I love fantasy novels with complex magic systems like Brandon Sanderson's works.",
+    "Non-fiction about personal development.",
     "I'm looking for science fiction that explores social issues and dystopian futures, similar to Margaret Atwood or Ursula K. Le Guin."
 ];
 
