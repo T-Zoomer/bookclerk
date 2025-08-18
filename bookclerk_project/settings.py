@@ -81,12 +81,7 @@ WSGI_APPLICATION = 'bookclerk_project.wsgi.application'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 # Check if we're in a build environment where database isn't available
-if os.getenv('RAILWAY_ENVIRONMENT') == 'build' or not any([
-    os.getenv('PGDATABASE'),
-    os.getenv('PGUSER'), 
-    os.getenv('PGPASSWORD'),
-    os.getenv('PGHOST')
-]):
+if os.getenv('RAILWAY_ENVIRONMENT') == 'build':
     # Use dummy database for build/collectstatic
     DATABASES = {
         'default': {
@@ -110,6 +105,10 @@ else:
             'PASSWORD': os.getenv('PGPASSWORD'),
             'HOST': os.getenv('PGHOST'),
             'PORT': os.getenv('PGPORT', 5432),
+            'CONN_MAX_AGE': 0,  # Prevent connection hanging
+            'OPTIONS': {
+                'connect_timeout': 10,
+            }
         }
     }
 
@@ -150,6 +149,9 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]  # new
 STATIC_ROOT = BASE_DIR / "staticfiles"  # for production
+
+# WhiteNoise settings for Railway
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
