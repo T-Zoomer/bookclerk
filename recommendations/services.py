@@ -44,7 +44,7 @@ class BookRecommendationService:
         prompt = f"""
         Based on these user preferences: "{user_preferences}"
         
-        Please recommend 10 books that would be a great fit. For each book, provide:
+        Please recommend 7 books that would be a great fit. For each book, provide:
         - Title
         - Author
         - Brief description (2-3 sentences)
