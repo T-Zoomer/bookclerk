@@ -1,10 +1,11 @@
 {% load static %}
 <!-- Header Section -->
 <div class="mb-6 md:mb-10 relative">
-        <div class="flex justify-start mb-6">
+        <div class="flex justify-between items-center mb-6">
             <a href="{% url 'home' %}" class="text-leather hover:text-ink text-base md:text-lg font-serif transition-colors duration-200">
                 ← New recommendation
             </a>
+            {% include 'recommendations/_sharing_buttons.html' %}
         </div>
         <!-- Mobile logo - centered above text -->
         <div class="flex justify-center md:hidden">

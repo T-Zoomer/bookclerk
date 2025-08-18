@@ -56,7 +56,7 @@ def get_recommendations(request):
         # Add to session recent requests
         recent_requests = request.session.get('recent_requests', [])
         recent_requests.insert(0, {
-            'id': req.id,
+            'id': str(req.id),
             'preferences': user_preferences,
             'created_at': req.created_at.isoformat()
         })
