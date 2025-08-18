@@ -14,7 +14,9 @@ def home(request):
 
 def about(request):
     """About page explaining how BookClerk works."""
-    return render(request, 'recommendations/about.html')
+    # Get recent requests from session for the header menu
+    recent_requests = request.session.get('recent_requests', [])
+    return render(request, 'recommendations/about.html', {'recent_requests': recent_requests})
 
 
 @require_http_methods(["POST"])

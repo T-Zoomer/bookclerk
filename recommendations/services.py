@@ -44,7 +44,7 @@ class BookRecommendationService:
         prompt = f"""
         Based on these user preferences: "{user_preferences}"
         
-        Please recommend 5 books that would be a great fit. For each book, provide:
+        Please recommend 10 books that would be a great fit. For each book, provide:
         - Title
         - Author
         - Brief description (2-3 sentences)
@@ -62,7 +62,7 @@ class BookRecommendationService:
                     {"role": "user", "content": prompt}
                 ],
                 temperature=0.7,
-                max_tokens=1500
+                max_tokens=2500
             )
             
             content = response.choices[0].message.content.strip()

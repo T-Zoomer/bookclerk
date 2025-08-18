@@ -108,6 +108,7 @@
         const closeMenuRecentBtn = document.getElementById('close-menu-recent');
         const menuPanelRecent = document.getElementById('menu-panel-recent');
         const openRecentMenuBtn = document.getElementById('open-recent-menu');
+        const openRecentMenuDesktopBtn = document.getElementById('open-recent-menu-desktop');
         const backToMainMenuBtn = document.getElementById('back-to-main-menu');
         
         let isMenuOpen = false;
@@ -186,6 +187,10 @@
 
         if (openRecentMenuBtn) {
             openRecentMenuBtn.addEventListener('click', openRecentMenu);
+        }
+
+        if (openRecentMenuDesktopBtn) {
+            openRecentMenuDesktopBtn.addEventListener('click', openRecentMenu);
         }
 
         if (backToMainMenuBtn) {

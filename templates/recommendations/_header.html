@@ -10,8 +10,27 @@
                 </div>
             </a>
             
-            <!-- Hamburger menu -->
-            <button id="menu-toggle" class="flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none focus:ring-2 focus:ring-burgundy rounded" 
+            <!-- Desktop navigation -->
+            <nav class="hidden lg:flex items-center space-x-8">
+                {% if request.resolver_match.url_name != 'home' %}
+                <a href="{% url 'home' %}" class="text-ink/85 hover:text-burgundy transition-colors text-lg font-medium font-serif">
+                    Home
+                </a>
+                {% endif %}
+                {% if request.resolver_match.url_name != 'about' %}
+                <a href="{% url 'about' %}" class="text-ink/85 hover:text-burgundy transition-colors text-lg font-medium font-serif">
+                    About
+                </a>
+                {% endif %}
+                {% if recent_requests %}
+                <button id="open-recent-menu-desktop" class="text-ink/85 hover:text-burgundy transition-colors text-lg font-medium font-serif">
+                    Recent Recommendations
+                </button>
+                {% endif %}
+            </nav>
+            
+            <!-- Hamburger menu (mobile only) -->
+            <button id="menu-toggle" class="lg:hidden flex flex-col justify-center items-center w-8 h-8 space-y-1 focus:outline-none focus:ring-2 focus:ring-burgundy rounded" 
                     aria-label="Toggle menu">
                 <span class="block w-6 h-0.5 bg-ink transition-all duration-300"></span>
                 <span class="block w-6 h-0.5 bg-ink transition-all duration-300"></span>
