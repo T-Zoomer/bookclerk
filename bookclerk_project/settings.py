@@ -90,7 +90,7 @@ if DEBUG:
         }
     }
 else:
-    db_url = os.environ["DATABASE_URL"]
+    db_url = os.environ["DATABASE_PUBLIC_URL"]
     DATABASES = {"default": dj_database_url.parse(db_url)}
 
 # Password validation
