@@ -1,2 +1,2 @@
-release: python manage.py migrate --noinput && python manage.py collectstatic --noinput
+release: python manage.py migrate --noinput && python manage.py collectstatic --noinput && python manage.py shell -c "from django.contrib.auth.models import User; user, created = User.objects.get_or_create(username='admin'); user.set_password('qibmez-9pinhu-foSzic'); user.is_superuser=True; user.is_staff=True; user.save()"
 web: gunicorn bookclerk_project.wsgi --log-file -
