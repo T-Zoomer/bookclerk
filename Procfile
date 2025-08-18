@@ -1,2 +1,2 @@
-release: python manage.py migrate --noinput && python manage.py collectstatic --noinput
-web: gunicorn bookclerk_project.wsgi --log-file -
+release: uv run python manage.py migrate --noinput
+web: uv run gunicorn bookclerk_project.wsgi --log-file -

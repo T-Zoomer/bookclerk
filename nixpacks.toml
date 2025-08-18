@@ -1,0 +1,11 @@
+[phases.setup]
+nixPkgs = ['python311']
+
+[phases.install]
+cmds = ['pip install uv', 'uv sync']
+
+[phases.build]
+cmds = ['uv run python manage.py collectstatic --noinput']
+
+[start]
+cmd = 'uv run gunicorn bookclerk_project.wsgi --log-file -'
