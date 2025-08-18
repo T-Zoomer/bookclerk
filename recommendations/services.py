@@ -25,8 +25,6 @@ class BookRecommendationService:
         # Properly encode the entire query
         encoded_query = urllib.parse.quote_plus(search_query)
         
-        print(f"AMAZON SEARCH QUERY: {search_query}")
-        print(f"ENCODED QUERY: {encoded_query}")
         
         # Amazon search URL with affiliate tag
         amazon_link = (
@@ -35,8 +33,6 @@ class BookRecommendationService:
             f"tag={settings.AMAZON_AFFILIATE_TAG}"
         )
         
-        print(f"AMAZON LINK: {amazon_link}")
-        print("=" * 50)
         
         return amazon_link
     
@@ -71,11 +67,6 @@ class BookRecommendationService:
             
             content = response.choices[0].message.content.strip()
             
-            # Print the raw LLM output to console for debugging
-            print("=" * 50)
-            print("LLM RAW OUTPUT:")
-            print(content)
-            print("=" * 50)
             
             # Try to extract JSON from the response
             if content.startswith('```json'):
@@ -103,14 +94,9 @@ class BookRecommendationService:
             return recommendations
             
         except json.JSONDecodeError as e:
-            print(f"JSON DECODE ERROR: {e}")
-            print(f"FAILED TO PARSE: {repr(content)}")
-            print("=" * 50)
             # Raise the error to be handled by the view
             raise Exception("Failed to parse AI response. Please try again.")
         except Exception as e:
-            print(f"GENERAL ERROR: {e}")
-            print("=" * 50)
             # Re-raise with a user-friendly message
             raise Exception("Unable to get recommendations at this time. Please try again later.")
     

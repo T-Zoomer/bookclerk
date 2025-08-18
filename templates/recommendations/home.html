@@ -1,7 +1,7 @@
 {% extends 'recommendations/base.html' %}
 {% load static %}
 
-{% block title %}BookClerk.AI{% endblock %}
+{% block title %}BookClerk{% endblock %}
 {% block description %}Discover your next favorite book with AI-powered recommendations. Tell us what you like to read and get personalized book suggestions tailored to your taste.{% endblock %}
 {% block keywords %}AI book recommendations, personalized book suggestions, book discovery, reading recommendations, book finder, what to read next{% endblock %}
 
@@ -11,7 +11,7 @@
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "BookClerk.AI",
+  "name": "BookClerk",
   "description": "AI-powered book recommendation service that provides personalized book suggestions based on your reading preferences",
   "url": "{{ request.build_absolute_uri }}",
   "applicationCategory": "BookApplication",
@@ -23,14 +23,14 @@
   },
   "creator": {
     "@type": "Organization",
-    "name": "BookClerk.AI"
+    "name": "BookClerk"
   }
 }
 </script>
 
 <div class="max-w-5xl mx-auto">
     <header class="text-center mb-8">
-        <h1 class="sr-only">BookClerk.AI - AI-Powered Book Recommendations</h1>
+        <h1 class="sr-only">BookClerk - AI-Powered Book Recommendations</h1>
     </header>
     {% include 'recommendations/_prompt_input.html' %}
 </div>

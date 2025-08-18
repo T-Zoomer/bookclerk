@@ -13,7 +13,7 @@ def home(request):
 
 
 def about(request):
-    """About page explaining how BookClerk.AI works."""
+    """About page explaining how BookClerk works."""
     return render(request, 'recommendations/about.html')
 
 

@@ -29,9 +29,9 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', 'True').lower() in ('true', '1', 'yes')
 
-ALLOWED_HOSTS = ['*'] if DEBUG else ['.railway.app', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*'] if DEBUG else ['bookclerk.bot', 'www.bookclerk.bot', '.railway.app', 'localhost', '127.0.0.1']
 
-CSRF_TRUSTED_ORIGINS = ['https://bookclerk-production.up.railway.app', 'https://*.railway.app']
+CSRF_TRUSTED_ORIGINS = ['https://bookclerk.bot', 'https://www.bookclerk.bot', 'https://bookclerk-production.up.railway.app', 'https://*.railway.app']
 
 
 # Application definition

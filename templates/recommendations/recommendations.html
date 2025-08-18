@@ -9,7 +9,7 @@
         <div class="space-y-6">
             {% for rec in recommendations %}
                 <!-- Individual Recommendation Card -->
-                <div class="w-full bg-cream rounded-xl shadow-xl border border-burgundy-soft overflow-hidden hover:shadow-2xl transition-all duration-300 group relative">
+                <div class="w-full bg-cream rounded-lg border border-burgundy-soft overflow-hidden transition-all duration-300 group relative">
                     <!-- Bookmark Number - Desktop only -->
                     <div class="hidden md:block absolute -top-3 left-6 z-20">
                         <div class="bg-burgundy text-cream w-14 h-12 flex items-start justify-center pt-3 shadow-lg border-2 border-gold/40 relative">
@@ -43,7 +43,7 @@
                                 </div>
                                 
                                 <!-- Recommendation Reason -->
-                                <div class="bg-parchment rounded-lg border-2 border-gold shadow-md p-3 mb-4 relative">
+                                <div class="bg-parchment rounded border-2 border-gold shadow-md p-3 mb-4 relative">
                                     <h4 class="text-base md:text-lg font-serif font-semibold text-leather mb-1">Why BookClerk recommends this:</h4>
                                     <p class="text-base md:text-lg text-ink font-serif leading-relaxed">"{{ rec.reason }}"</p>
                                 </div>
@@ -56,7 +56,7 @@
                             <a href="{{ rec.amazon_url }}" 
                                target="_blank" 
                                rel="noopener noreferrer"
-                               class="bg-burgundy hover:bg-burgundy/90 text-cream px-4 md:px-6 py-2 md:py-3 rounded-lg text-base md:text-lg font-serif font-bold transition-all duration-200 transform hover:scale-105 shadow-xl border-3 border-gold hover:shadow-2xl flex items-center space-x-2">
+                               class="bg-burgundy hover:-translate-y-1 text-cream px-4 md:px-6 py-2 md:py-3 rounded text-base md:text-lg font-serif font-bold transition-all duration-200 flex items-center space-x-2 shadow-xl border-3 border-gold hover:shadow-2xl active:scale-[0.95]">
                                 <span>View Book</span>
                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>

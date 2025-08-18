@@ -4,30 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}BookClerk.AI - AI-Powered Book Recommendations{% endblock %}</title>
+    <title>{% block title %}BookClerk - AI-Powered Book Recommendations{% endblock %}</title>
     <meta name="description" content="{% block description %}Get personalized book recommendations using AI. Discover your next favorite book based on your reading preferences and interests.{% endblock %}">
     <meta name="keywords" content="{% block keywords %}book recommendations, AI books, reading suggestions, book discovery, personalized books, book finder{% endblock %}">
     <meta name="robots" content="index, follow">
-    <meta name="author" content="BookClerk.AI">
+    <meta name="author" content="BookClerk">
     <link rel="canonical" href="{% block canonical %}{{ request.build_absolute_uri }}{% endblock %}">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="{% block og_type %}website{% endblock %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
-    <meta property="og:title" content="{% block og_title %}BookClerk.AI - AI-Powered Book Recommendations{% endblock %}">
+    <meta property="og:title" content="{% block og_title %}BookClerk - AI-Powered Book Recommendations{% endblock %}">
     <meta property="og:description" content="{% block og_description %}Get personalized book recommendations using AI. Discover your next favorite book based on your reading preferences and interests.{% endblock %}">
     <meta property="og:image" content="{% block og_image %}{% static 'images/favicon.png' %}{% endblock %}">
-    <meta property="og:site_name" content="BookClerk.AI">
+    <meta property="og:site_name" content="BookClerk">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="{{ request.build_absolute_uri }}">
-    <meta property="twitter:title" content="{% block twitter_title %}BookClerk.AI - AI-Powered Book Recommendations{% endblock %}">
+    <meta property="twitter:title" content="{% block twitter_title %}BookClerk - AI-Powered Book Recommendations{% endblock %}">
     <meta property="twitter:description" content="{% block twitter_description %}Get personalized book recommendations using AI. Discover your next favorite book based on your reading preferences and interests.{% endblock %}">
     <meta property="twitter:image" content="{% block twitter_image %}{% static 'images/favicon.png' %}{% endblock %}">
     
     <link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}"
-          alt="BookClerk.AI favicon - book icon representing AI-powered reading recommendations">
+          alt="BookClerk favicon - book icon representing AI-powered reading recommendations">
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
     <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&display=swap"></noscript>
     <link rel="preconnect" href="https://fonts.googleapis.com">
