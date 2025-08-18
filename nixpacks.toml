@@ -5,7 +5,7 @@ nixPkgs = ['python311']
 cmds = ['pip install uv', 'uv sync']
 
 [phases.build]
-cmds = ['uv run python manage.py collectstatic --noinput']
+cmds = ['echo "Skipping collectstatic during build - will run in release phase"']
 
 [start]
 cmd = 'uv run gunicorn bookclerk_project.wsgi --log-file -'
