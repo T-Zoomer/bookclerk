@@ -90,9 +90,8 @@ if DEBUG:
         }
     }
 else:
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ["DATABASE_PUBLIC_URL"])
-    }
+    db_url = os.environ["DATABASE_URL"]
+    DATABASES = {"default": dj_database_url.parse(db_url)}
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
