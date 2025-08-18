@@ -90,11 +90,16 @@ if DEBUG:
         }
     }
 else:
-    database_url = os.getenv('DATABASE_URL')
     DATABASES = {
-        'default': dj_database_url.parse(database_url, conn_max_age=0)
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql',
+            'NAME': os.environ["PGDATABASE"],
+            'USER': os.environ["PGUSER"],
+            'PASSWORD': os.environ["PGPASSWORD"],
+            'HOST': os.environ["PGHOST"],
+            'PORT': os.environ["PGPORT"],
+        }
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
