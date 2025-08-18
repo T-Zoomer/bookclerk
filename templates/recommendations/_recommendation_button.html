@@ -15,31 +15,22 @@
 <script>
 function showLoadingState(buttonId, loadingText) {
     const submitBtn = document.getElementById(buttonId);
-    const btnContent = submitBtn.querySelector('.btn-content');
     
-    if (submitBtn && btnContent) {
+    if (submitBtn) {
+        // Disable the button immediately
         submitBtn.disabled = true;
-        submitBtn.classList.add('animate-pulse', 'bg-burgundy/70');
-        btnContent.innerHTML = `
-            <div class="flex items-center space-x-2">
-                <div class="w-5 h-4 relative">
-                    <div class="w-1 h-4 bg-cream absolute left-0 animate-bounce"></div>
-                    <div class="w-4 h-3 bg-burgundy absolute right-0 top-0.5 rounded-r-sm animate-pulse"></div>
-                </div>
-                <span>${loadingText}</span>
-                <div class="flex space-x-1">
-                    <div class="w-1 h-1 bg-cream rounded-full animate-bounce" style="animation-delay: 0s"></div>
-                    <div class="w-1 h-1 bg-cream rounded-full animate-bounce" style="animation-delay: 0.1s"></div>
-                    <div class="w-1 h-1 bg-cream rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
-                </div>
-            </div>
-        `;
+        submitBtn.classList.add('opacity-50');
+        
+        // Show the BookClerk loading screen
+        if (typeof showBookClerkLoading === 'function') {
+            showBookClerkLoading();
+        }
         
         // If this is a form button, submit the form
         if (submitBtn.type === 'submit') {
             setTimeout(() => {
                 submitBtn.closest('form').submit();
-            }, 100);
+            }, 300); // Small delay to show the loading animation
         }
     }
 }
